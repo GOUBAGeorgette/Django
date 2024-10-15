@@ -8,34 +8,48 @@
     <title>Inscription</title>
     <style>
         body {
-            background-color: #f7f7f7;
+            background-color: #f8f9fa; /* Couleur de fond gris clair */
         }
         .signup-container {
             margin-top: 100px;
             max-width: 500px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
         .signup-btn {
             background-color: #28a745;
             color: white;
+            font-weight: bold;
         }
         .signup-btn:hover {
             background-color: #218838;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .icon {
             font-size: 2rem;
             color: #28a745;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+            border-color: #28a745;
+        }
+        .footer-link {
+            color: #28a745;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        .form-group {
+            margin-bottom: 1.5rem; /* Espacement entre les champs */
         }
     </style>
 </head>
 <body>
     <div class="container signup-container">
         <h2 class="text-center mb-4"><i class="fas fa-user-plus icon"></i> Inscription</h2>
-        <form action="{% url 'signup' %}" method="post">
-            {% csrf_token %}
+        <form action="#" method="post"> <!-- Remplacez '#' par votre URL de traitement -->
             <div class="form-group">
                 <label for="username">Nom d'utilisateur:</label>
                 <input type="text" class="form-control" id="username" placeholder="Entrez votre nom d'utilisateur" name="username" required>
@@ -50,7 +64,7 @@
             </div>
             <button type="submit" class="btn signup-btn btn-block">S'inscrire</button>
         </form>
-        <p class="text-center mt-3">Vous avez déjà un compte? <a href="{% url 'login' %}">Connexion</a></p>
+        <p class="text-center mt-3">Vous avez déjà un compte? <a href="#" class="footer-link">Connexion</a></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

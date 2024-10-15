@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .forms import PanneForm, LoginForm, SignupForm  # Importez tous les formulaires nécessaires
 
@@ -20,16 +21,21 @@ def confirmation(request):
 
 # Vue pour la page d'accueil (index)
 def index(request):
-    return render(request, 'soumission_pannes/index.html')
+    return render(request, 'soumission_pannes/index.html')  # Page d'accueil
 
 # Vue pour la connexion
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            # Authentification de l'utilisateur ici
-            # Vous devez ajouter votre logique d'authentification
-            return redirect('index')  # Redirigez vers la page d'accueil après connexion
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('index')  # Redirigez vers la page d'accueil après connexion
+            else:
+                form.add_error(None, "Identifiants invalides")  # Ajoute une erreur au formulaire
     else:
         form = LoginForm()
     
@@ -48,7 +54,7 @@ def signup_view(request):
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
             
-            return redirect('login')  # Redirigez vers la page de connexion
+            return redirect('login')  # Redirigez vers la page de connexion après l'inscription
     else:
         form = SignupForm()
 
@@ -56,4 +62,4 @@ def signup_view(request):
 
 # Vue pour la page À propos
 def a_propos_view(request):
-    return render(request, 'soumission_pannes/a_propos.html')
+    return render(request, 'soumission_pannes/a_propos.html')  # Page À propos

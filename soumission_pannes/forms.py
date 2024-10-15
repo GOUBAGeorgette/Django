@@ -4,9 +4,7 @@ from .models import Panne
 class PanneForm(forms.ModelForm):
     class Meta:
         model = Panne
-        fields = ['titre', 'description', 'localisation']  # Pas de 'etat' ici
-
-from django import forms
+        fields = ['infrastructure', 'titre', 'description', 'status']  # Utilisez uniquement les champs existants du modèle
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)

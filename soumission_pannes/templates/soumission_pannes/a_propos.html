@@ -22,6 +22,9 @@
             font-size: 2rem;
             color: #17a2b8;
         }
+        p {
+            margin-bottom: 15px; /* Ajout d'espace entre les paragraphes */
+        }
     </style>
 </head>
 <body>
@@ -33,9 +36,9 @@
         <p>
             Notre mission est de fournir une interface simple et efficace pour les citoyens et les autorités, afin d'améliorer la qualité de vie dans nos communautés.
         </p>
-        <em>
-            Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter via notre formulaire de contact.
-        </em>
+        <p>
+            <em>Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter via notre <a href="{% url 'contact' %}">formulaire de contact</a>.</em>
+        </p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
